@@ -22,12 +22,21 @@ class CategoryController extends Controller
         foreach($journals as $journal)
         {
            // $journal_key = array();
-            array_push($journal_key,$journal->keywards);
+           $key = strtolower(ltrim($journal->keywards));
+          // var_dump($key);
+            $keywords = explode(',',$key);
+
+            array_push($journal_key,$keywords);
            // print_r($journal_key);
 
         }
+        $one_d_array = call_user_func_array('array_merge',$journal_key);
+        $key2 = array_map('trim',$one_d_array);
+        $keys = array_unique($key2);
 
-        return view('categoryShow',compact('journal_key'));
+        //dd($keys);
+
+        return view('categoryShow',compact('keys'));
 
     }
 }

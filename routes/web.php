@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminCategoryController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\SearchController;
 use App\Models\Category;
 use App\Models\Journal;
 use App\Models\User;
@@ -28,6 +29,7 @@ use App\Models\User;
 |
 */
 //Guest routes
+//Route::get('search',SearchController::class)->name('search');
 Route::get('/', [HomeController::class,'index'])->name('home');
 //Route::get('/all-categories',[HomeController::class,'category'])->name('category');
 Route::get('/all-papers',[HomeController::class,'allpapers'])->name('allpapers');
@@ -56,10 +58,7 @@ Route::get('/category/{id}',[CategoryController::class,'show']);
 
 //Search Route
 
-Route::get(
-    'search',
-    App\Http\Controllers\SearchController::class
-)->name('search');
+Route::get('/search',SearchController::class);
 
 
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){

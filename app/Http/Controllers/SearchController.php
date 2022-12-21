@@ -3,19 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Journal;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Meilisearch\Client;
 
 class SearchController extends Controller
 {
-    public function __invoke(Request $request):JsonResponse
+    public function __invoke(Request $request)
     {
-        return new JsonResponse(
-            data:Journal::search(
-                query:trim($request->get('search')) ?? '',
-            )->get(),
-            status:Response::HTTP_OK,
-        );
+        $client = new Client('https:://127.0.0.1:7700');
+        $client->index('journal_index')->updateSettings([
+        'sortableAttributes' => 'created_at'
+       ]);
+      //$sort =  $client->getSortableAttributes();
+       // dd($sort);
+        $result = null;
+        if($query = $request->get('query')){
+            $result = Journal::search($query)
+            ->orderBy('created_at','DESC')
+            ->get();
+        }
+        return view('search',compact('result'));
     }
 }

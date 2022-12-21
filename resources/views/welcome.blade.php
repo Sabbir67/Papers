@@ -72,13 +72,13 @@
           <div class="col-span-2 bg-indigo-50 first-line:pb-4">
 
             <h3 class="bg-indigo-500 text-xl font-bold p-1 text-white ">Keywords</h3>
-            <ul class="text-left pl-10 list-disc mt-2">
-                @foreach ($journals as $journal)
 
-                <a href="/paperview/{{ $journal->id }}"><li  class=" text-l ">{{ $journal->jtitle }}</li></a>
+                @foreach ($key as $keys)
+
+                <button  class="p-2 mt-4 rounded-md text-black bg-gray-300"> {{ ucwords($keys) }}</button>
 
                 @endforeach
-            </ul>
+
 
           </div>
 

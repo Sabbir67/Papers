@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 class Journal extends Model
 {
     use HasFactory,Searchable;
-   
+
     public function journalsImage()
     {
         return $this->belongsTo(JournalsImage::class);
@@ -23,4 +23,5 @@ class Journal extends Model
     {
         return 'journal_index';
     }
+   
 }

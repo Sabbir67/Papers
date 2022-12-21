@@ -28,7 +28,25 @@ class HomeController extends Controller
         // $users = DB::table('users')
         //             ->select('users.name as uname',
         //                 'users.image as uimage');
-        return view('welcome')->with('journals',$journals)->with('category',$category);
+        $journal = Journal::all();
+        $journal_key = array();
+        foreach($journals as $journal)
+        {
+           // $journal_key = array();
+           $key = strtolower(ltrim($journal->keywards));
+          // var_dump($key);
+            $keywords = explode(',',$key);
+
+            array_push($journal_key,$keywords);
+           // print_r($journal_key);
+
+        }
+        $one_d_array = call_user_func_array('array_merge',$journal_key);
+        $key2 = array_map('trim',$one_d_array);
+        $keys = array_unique($key2);
+        $key = array_filter($keys);
+    //    dd($key);
+        return view('welcome',compact('category','journals','key'));
     }
     public function category()
     {

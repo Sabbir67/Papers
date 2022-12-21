@@ -30,7 +30,7 @@ class AuthorJournalController extends Controller
         $journal->title = $request->input('title');
         $journal->abstract = $request->input('abstract');
         //$journal->keywards = $request->input('keywards');
-        $journal->keywards = $request->keywords;
+        $journal->keywards = strtolower($request->keywords);
         //dd($request->keywords);
         $journal->jdate = $request->input('jdate');
         $journal->a1fname = $request->input('a1fname');
