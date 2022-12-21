@@ -72,12 +72,11 @@
           <div class="col-span-2 bg-indigo-50 first-line:pb-4">
 
             <h3 class="bg-indigo-500 text-xl font-bold p-1 text-white ">Keywords</h3>
+            @foreach ($key as $keys)
+                <a href="/search?query={{str_replace(' ','+',$keys)}}" class="p-3">{{ ucwords($keys) }}</a>
+            @endforeach
 
-                @foreach ($key as $keys)
 
-                <button  class="p-2 mt-4 rounded-md text-black bg-gray-300"> {{ ucwords($keys) }}</button>
-
-                @endforeach
 
 
           </div>

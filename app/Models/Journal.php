@@ -23,5 +23,9 @@ class Journal extends Model
     {
         return 'journal_index';
     }
-   
+    public function toSearchableArray()
+    {
+        return $this->toArray();
+    }
+
 }
