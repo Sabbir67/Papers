@@ -6,21 +6,21 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Journal;
+
+use App\Models\User;
+use App\Models\Category;
+
 class AdminLoginController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest:admin');
-    }
+
 
     public function showLoginPage()
     {
-        if(auth()->guard('web')->user()){
-            return redirect()->back();
-        }else{
+
         return view('auth.admin-login');
 
-        }
+
     }
 
     public function login(Request $request)
@@ -35,7 +35,7 @@ class AdminLoginController extends Controller
       if(auth()->guard('admin')->attempt($cred)){
 
        // dd();
-        return redirect()->intended(route('admin.dashboard'));
+        return redirect()->intended(route('dashboard'));
     }
     return redirect()->back();
         // \DB::enableQueryLog();
@@ -48,9 +48,15 @@ class AdminLoginController extends Controller
     }
     public function showDashboard()
     {
-        $user = auth()->guard('admin')->user();
+       //$user = auth()->guard('admin')->user();
         //Session::get($user);
-        return view('admin.dashboard')->with('user',$user);
+        $userShow = User::count();
+        $paperCount = Journal::count();
+
+        $categoryCount = Category::count();
+
+        // return view('admin.dashborad',compact('userShow','journalShow','reviewerShow','user'));
+        return view('dashboard',compact('paperCount','categoryCount'));
     }
     public function destroy(Request $request)
     {

@@ -18,9 +18,8 @@
       <tr>
         <th>Title</th>
         <th>Details</th>
-        <th>Assigns</th>
         <th>Date</th>
-        <th>Status</th>
+    
 
       </tr>
     @foreach ($journals as $journal)
@@ -29,21 +28,13 @@
           <p><b>{{$journal->title}}</b></p>
         </td>
         <td>
-          <b><a href="/journals/{{$journal->id}}">content</a></b>
+          <b><a href="/admin/journals/{{$journal->id}}">content</a></b>
         </td>
-        <td>
-          <b><a href="/journals/assigns/{{$journal->id}}"><i class="fas fa-tasks"></i> details</a></b>
-        </td>
+
         <td>
           <b>{{$journal->created_at}}</b>
         </td>
-        <td>
-            @if ($journal->status)
-            <b>Approved</b>
-            @else
-            <b>Pending</b>
-            @endif
-          </td>
+
     @endforeach
     </tr>
     </table>

@@ -18,13 +18,7 @@
                 <h2 class="text-white text-3xl">{{ $categoryCount }}</h2>
             </div>
         </div>
-        <div class="bg-orange-500 mb-3 w-full pt-3 rounded-2xl ">
-
-            <div class="text-center p-3">
-                <h1 class="text-white"> <b>Total Author</b> </h1>
-                <h2 class="text-white text-3xl">{{ $author }}</h2>
-            </div>
-        </div>
+        
 
 
     </div>

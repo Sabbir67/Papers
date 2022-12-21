@@ -15,7 +15,7 @@ class AuthorJournalController extends Controller
 
     public function index(){
         //$user_id = auth()->user()->id;
-        $journals = Journal::where('status',true)->get();
+        $journals = Journal::latest()->get();
          //dd(auth()->guard('web')->check());
         return view('journal.journal')->with('journals',$journals);
     }
@@ -35,42 +35,19 @@ class AuthorJournalController extends Controller
         $journal->jdate = $request->input('jdate');
         $journal->a1fname = $request->input('a1fname');
         $journal->a1lname = $request->input('a1lname');
-        $journal->a1affiliation = $request->input('a1affiliation');
-        $journal->a1email = $request->input('a1email');
-        $journal->a2fname = $request->input('a2fname');
-        $journal->a2lname = $request->input('a2lname');
-        $journal->a2affiliation = $request->input('a2affiliation');
-        $journal->a2email = $request->input('a2email');
-        $journal->a3fname = $request->input('a3fname');
-        $journal->a3lname = $request->input('a3lname');
-        $journal->a3affiliation = $request->input('a3affiliation');
-        $journal->a3email = $request->input('a3email');
-        $journal->a4fname = $request->input('a4fname');
-        $journal->a4lname = $request->input('a4lname');
-        $journal->a4affiliation = $request->input('a4affiliation');
-        $journal->a4email = $request->input('a4email');
+        $journal->student_id = $request->input('student_id');
+        $journal->department = $request->input('department');
+        $journal->session = $request->input('session');
+        $journal->year = $request->input('year');
         $journal->category_id = $request->category_id;
-        $journal->user_id = auth()->user()->id;
-        $journal->status = false;
         $journal->save();
 
         $journalId = $journal->id;
         //dd($journal->user_id);
-        if($request->hasFile('image')){
-            $file = $request->file('image');
-            $takeFile = $file->getClientOriginalName();
-            $filename = pathinfo($takeFile,PATHINFO_FILENAME);
-            $extension = $file->getClientOriginalExtension();
-            $fileNameToStore1 = $filename.'.'.$extension;
-            $path = $file->storeAs("public/journals/".$journalId,$fileNameToStore1);
-            $journals = new JournalsImage;
-            $journals->journal_id = $journalId;
-            $journals->image = $path;
-            $journals->save();
-        }
+
         //handle pdf upload
-    if ($request->hasFile('pdf')) {
-        $pdf = $request->file('pdf');
+        if ($request->hasFile('pdf')) {
+            $pdf = $request->file('pdf');
             //get file name with extension
             $takeFile = $pdf->getClientOriginalName();
             //get just file name
@@ -86,12 +63,13 @@ class AuthorJournalController extends Controller
             $journals->journal_id = $journalId;
             $journals->pdf = $path;
             $journals->save();
-      }
+        }
       //handle doc upload
 
-      return redirect('/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
+      return redirect('/admin/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
 
     }
+
     public function show($id)
     {
         $id_d = (int)$id;

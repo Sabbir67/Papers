@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Journal extends Model
 {
-    use HasFactory;
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    use HasFactory,Searchable;
+   
     public function journalsImage()
     {
         return $this->belongsTo(JournalsImage::class);
@@ -20,9 +18,9 @@ class Journal extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function reviewer()
-    {
-        return $this->hasMany(Reviewer::class);
-    }
 
+    public function searchableAs()
+    {
+        return 'journal_index';
+    }
 }

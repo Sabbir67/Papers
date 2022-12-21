@@ -21,12 +21,12 @@
             </div>
     </form>
     @else
-    <h1 align="center">Category FORM</h1> <br>
+    <h1 align="center">Create Category</h1> <br>
     <form action="{{url('admin/category')}}" method="POST"  class="form-horizontal" id="category_form">
         {{ csrf_field() }}
          <!-- Text input-->
          <div class="form-group">
-            <label class="col-md-4 control-label" >Category Name</label>
+            <label class="col-md-4 control-label pt-2" >Category Name</label>
               <div class="col-md-4 inputGroupContainer">
             <input name="title" placeholder="Cateogroy Name" class="form-control"  type="text">
               </div>

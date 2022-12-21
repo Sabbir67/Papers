@@ -35,7 +35,7 @@
                     <div>
                       <!-- Website Logo -->
                       <a href="#" class="flex items-center py-4 px-2">
-                        <img src="{{ asset("img/logo-ju.png") }}" alt="Logo" class="h-16 w-64 mr-2">
+                        <img  href="{{ route('home') }}" src="{{ asset("img/logo-ju.png") }}" alt="Logo" class="h-16 w-64 mr-2">
 
                       </a>
                     </div>
@@ -136,7 +136,7 @@
                   <div class="sm:pb-4 sm:pl-10">
 
                     <h3 class="text-xl font-bold text-white text-left">About Us</h3>
-                    <p class="text-white text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quisquam quos hic suscipit ipsa voluptatibus numquam error ducimus magni, obcaecati sit nulla vero rerum ab minus animi est officiis odit.</p>
+                    <p class="text-white text-left">Research Paper Management System is a one-stop online platform for all publications on various fields like Computer Science, Environmental Engineering, Mechanical Engineering, Robotics and Automation, Statistics, General Mathematics, Public Health, Energy, Social Science, and many more.</p>
 
 
                   </div>
@@ -149,10 +149,15 @@
 
                     <h3 class="text-xl font-bold text-white text-left">Quick Links</h3>
                     <ul class="text-left pl-5 list-disc mt-2 text-white">
-                      <li  class="  ">Privacy Policy</li>
-                      <li  class="">About Us</li>
-                      <li  class=" ">Tearms & Condition</li>
-                      <li  class="  ">Instructions</li>
+                        <li  class=""> <a href="{{ route('home') }}">Home</a></li>
+                        <li  class=""> <a href="{{ route('category') }}">All Categories</a></li>
+                        <li  class=""> <a href="{{ route('allpapers') }}">All Papers</a></li>
+                        <li  class=""> <a href="{{ route('editorialmember') }}">Editorial Board</a></li>
+                        <li  class=""> <a href="{{ route('aboutus') }}">About Us</a></li>
+                        <li  class=""> <a href="{{ route('instruction') }}">Instructions</a></li>
+
+
+
 
                     </ul>
 
@@ -165,10 +170,10 @@
 
                     <h1 class="text-xl font-bold text-white text-left">Quick Links</h1>
                     <ul class="text-left pl-5 list-disc mt-2 text-white">
-                      <li  class="">About Us</li>
+
                       <li  class="">Tearms & Condition</li>
                       <li  class="">Privacy Policy</li>
-                      <li  class="">Instructions</li>
+
 
                     </ul>
 
@@ -192,7 +197,7 @@
                   <div class="sm:pb-4 sm:pl-10">
 
 
-                    <p class="text-white text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, accusantium vitae voluptatibus eum odio non minima molestiae maxime ut, expedita quae? Eveniet enim dolore ad aut, sapiente eaque accusamus praesentium est. Vero quaerat odit dolor. Tempore officiis pariatur autem ipsa asperiores aut illum, minima facere, vitae voluptate quos nam? Error quam molestiae illum, ea a eum, harum iste, quibusdam sapiente optio soluta incidunt quae ut necessitatibus magnam placeat quos? Minima eligendi debitis, provident consectetur ipsam, voluptates architecto placeat dolor autem exercitationem adipisci quisquam eius deserunt fuga ea cum consequatur beatae vero vitae reprehenderit dicta delectus facere libero. Nisi, dicta earum.</p>
+                    {{-- <p class="text-white text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, accusantium vitae voluptatibus eum odio non minima molestiae maxime ut, expedita quae? Eveniet enim dolore ad aut, sapiente eaque accusamus praesentium est. Vero quaerat odit dolor. Tempore officiis pariatur autem ipsa asperiores aut illum, minima facere, vitae voluptate quos nam? Error quam molestiae illum, ea a eum, harum iste, quibusdam sapiente optio soluta incidunt quae ut necessitatibus magnam placeat quos? Minima eligendi debitis, provident consectetur ipsam, voluptates architecto placeat dolor autem exercitationem adipisci quisquam eius deserunt fuga ea cum consequatur beatae vero vitae reprehenderit dicta delectus facere libero. Nisi, dicta earum.</p> --}}
 
 
                   </div>

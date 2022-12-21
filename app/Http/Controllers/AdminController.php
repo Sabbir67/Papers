@@ -18,7 +18,7 @@ class AdminController extends Controller
     {
         $userShow = User::count();
         $journalShow = Journal::count();
-        $reviewerShow = Reviewer::count();
+       
 
         return view('admin.dashborad',compact('userShow','journalShow','reviewerShow'));
     }

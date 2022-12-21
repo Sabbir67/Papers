@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             CategorySeeder::class,
-           // UserSeeder::class,
-            AdminSeeder::class,
+            UserSeeder::class,
+            //AdminSeeder::class,
            // JournalSeeder::class
         ]);
     }

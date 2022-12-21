@@ -6,13 +6,13 @@
 
       <section class="" style="background-color: skyblue ;">
 
-        <div class="p-4 sm:p-10 sm:h-96 w-full bg-no-repeat h-full bg-cover " style="background-image: url('img/headBackground2.jpg');">
+        <div class="p-4 sm:p-10 sm:h-96 w-full bg-no-repeat h-full bg-cover " style="background-image: url('img/headBackground3.jpg');">
 
           <div class="sm:flex">
 
             <div class="sm:w-3/4 sm:pr-16" >
               <h1 class="text-white text-2xl md:text-2xl sm:text-2xl font-bold ">Confidence in Research</h1>
-              <p class="text-white pt-2 sm:text-xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex dolor delectus dicta commodi incidunt praesentium velit consectetur accusamus quos et laborum quo at, exercitationem accusantium quasi minima consequatur distinctio animi unde optio? Quis animi incidunt qui ex, itaque quibusdam cum necessitatibus fuga magnam! Praesentium illo quidem facilis eum eveniet harum?</p>
+              <p class="text-white pt-2 sm:text-xl">Research Paper Management System is a one-stop online platform for all publications on various fields like Computer Science, Environmental Engineering, Mechanical Engineering, Robotics and Automation, Statistics, General Mathematics, Public Health, Energy, Social Science, and many more.</p>
 
               <div class="sm:flex pt-5 text-center">
                 <button  class="bg-blue-800 hover:bg-blue-500 text-white font-bold sm:py-2 mb-3 p-2 sm:px-4 mr-4 border rounded"> <a href="{{ route('allpapers') }}"> View All Papers</a>
@@ -26,14 +26,16 @@
 
             </div>
 
-            <div class="h-60 bg-blue-800 sm:w-1/4  border rounded p-7 text-center ">
-              <h2 class="text-white text-center text-2xl">Call for Papers</h2>
+            <div class="h-60 bg-blue-500 bg-opacity-25  sm:w-1/4  border rounded p-7 text-center ">
+              <div class="">
+                <h2 class="text-white opacity-100 text-center text-2xl">Call for Papers</h2>
 
-              <p class="font-bold text-white ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+              <p class="font-bold text-white ">Research Paper Management System determined to ensure high-quality, original publications. </p>
 
               <button class="mt-4 bg-red-500 hover:bg-pink-700 text-white font-bold py-2 px-4 border rounded"> <a href="{{ route('register') }}">
                 Submit Your Paper </a>
               </button>
+              </div>
             </div>
 
           </div>
@@ -48,11 +50,11 @@
 
       <section class="p-5">
 
-        <div class="grid grid-cols-1 sm:grid-cols-4 sm:gap-4 text-center ">
+        <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-4 text-center ">
 
-          <div class="  bg-indigo-200 pb-4">
+          <div class="  bg-slate-50 pb-4">
 
-            <h1 class="bg-blue-800 text-xl font-bold p-1 text-white  ">Categories</h1>
+            <h1 class="bg-blue-400 text-xl font-bold p-1 text-white  ">Categories</h1>
             <ul class="text-left pl-10 list-disc mt-2">
                 @foreach ($category as $categories )
                     <a href="/category/{{ $categories->id }}"><li  class=" text-l ">{{ $categories->title }}</li></a>
@@ -67,39 +69,50 @@
           <!-- featured Papers -->
 
 
-          <div class="col-span-2 bg-indigo-200 pb-4">
+          <div class="col-span-2 bg-indigo-50 first-line:pb-4">
 
-            <h3 class="bg-indigo-800 text-xl font-bold p-1 text-white ">Featured Papers</h3>
+            <h3 class="bg-indigo-500 text-xl font-bold p-1 text-white ">Keywords</h3>
             <ul class="text-left pl-10 list-disc mt-2">
                 @foreach ($journals as $journal)
-                @if ($journal->status)
+
                 <a href="/paperview/{{ $journal->id }}"><li  class=" text-l ">{{ $journal->jtitle }}</li></a>
-                @endif
+
                 @endforeach
-
-
-
             </ul>
 
           </div>
 
-          <!-- part 3 Notice -->
 
-          <div class="bg-indigo-200 pb-4">
 
-            <h1 class="bg-blue-800 text-xl font-bold p-1 text-white ">Notice</h1>
+        </div>
+
+      </section>
+
+
+      {{-- Paper Section --}}
+
+      <section class="p-5">
+
+        <div class="grid grid-cols-1 sm:grid-cols-1 sm:gap-4 text-center ">
+
+
+
+          <!-- featured Papers -->
+
+
+          <div class="col-span-1 bg-indigo-50 pb-4">
+
+            <h3 class="bg-indigo-400 text-xl font-bold p-1 text-white ">All Papers</h3>
             <ul class="text-left pl-10 list-disc mt-2">
-              <li  class=" text-l ">Notice 001</li>
-              <li  class=" text-l ">Notice 002</li>
-              <li  class=" text-l ">Notice 003</li>
-              <li  class=" text-l ">Notice 004</li>
-              <li  class=" text-l ">Notice 005</li>
-              <li  class=" text-l ">Notice 007</li>
-              <li  class=" text-l ">Notice 006</li>
+                @foreach ($journals as $journal)
+                <a href="/paperview/{{ $journal->id }}"><li  class=" text-l hover:text-green">{{ $journal->jtitle }}</li></a>
 
+                @endforeach
             </ul>
 
           </div>
+
+
 
         </div>
 

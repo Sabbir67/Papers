@@ -3,11 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    @if (!auth()->guard('web')->check())
     <title>Admin Dashboard</title>
-    @else
-    <title>Researcher Dashboard</title>
-    @endif
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -79,52 +75,21 @@
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"></h6>
-                        <span class="text-white">Researcher</span>
+                        <span class="text-white">Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100 ">
-                    @if (auth()->guard('web')->user())
+
+
                     <a href="{{ route('dashboard') }}" class="nav-item nav-link "><i
-                            class="fa fa-tachometer-alt me-2"></i> <span class="text-white">Dashboard</span> </a>
-                    @else
-                    <a href="{{ route('admin.dashboard') }}" class="nav-item nav-link "><i
                         class="fa fa-tachometer-alt me-2"></i> <span class="text-white">Dashboard</span> </a>
-                    @endif
-                    {{-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div> --}}
-                    @if (auth()->guard('web')->check())
-                    <a href="/journals/create" class="nav-item nav-link"><i class="fa fa-pen"></i><span class="text-white text-l pl-2">Create a Journal</span> </a>
-                    @endif
-                    @if (auth()->guard('web')->check())
-                    <a href="/dashboard" class="nav-item nav-link"><i class="fa fa-book"></i> <span class="text-white text-l pl-2">View Your Journals</span> </a>
-                    @else
-                    <a href="{{ route('journals.pending') }}" class="nav-item nav-link"><i class="fa fa-book"></i> <span class="text-white text-l pl-2">Pending Journals</span> </a>
-                    @endif
-                    <a href="/journals" class="nav-item nav-link"><i class="fa fa-globe"></i> <span class="text-white text-l pl-2">Browse All Journals</span> </a>
-
-                    @if(!auth()->guard('web')->user())
-
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-item nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i><span class="text-white text-l pl-2">Reviewer</span></a>
-                        <div class="dropdown-menu bg-transparent border-0 ms-4">
-
-                            <a href="{{ route("viewreviewer") }}" class="nav-item nav-link pl-3"><i class="fa fa-graduation-cap"></i> <span class="text-white text-l">View Reviewers</span> </a>
-
-                            <a href="{{ route("createreviewer") }}" class="nav-item nav-link"><i class="fa fa-graduation-cap"></i> <span class="text-white text-l pl-2">Create Reviewer</span> </a>
-                            <a href="/reviewer" class="nav-item nav-link"><i class="fa fa-graduation-cap"></i> <span class="text-white text-l pl-2">Assign Reviewer</span> </a>
 
 
-                            {{-- <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a> --}}
-                        </div>
-                    </div>
+
+                    <a href="/admin/journals/create" class="nav-item nav-link"><i class="fa fa-pen"></i><span class="text-white text-l pl-2">Create a Journal</span> </a>
+
+
+                    <a href="/admin/journals" class="nav-item nav-link"><i class="fa fa-globe"></i> <span class="text-white text-l pl-2">Browse All Journals</span> </a>
 
 
                     <div class="nav-item dropdown">
@@ -136,7 +101,6 @@
                             <a href="{{ route("createcategory") }}" class="nav-item nav-link"><i class="fa fa-graduation-cap"></i> <span class="text-white text-l pl-2">Create Category</span> </a>
 
 
-
                         </div>
                     </div>
 
@@ -145,7 +109,7 @@
 
 
 
-                    @endif
+
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">

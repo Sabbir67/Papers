@@ -16,31 +16,19 @@ return new class extends Migration
         Schema::create('journals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('keywards')->nullable();
+            $table->string('keywards');
             $table->text('abstract');
             $table->date('jdate');
             $table->string('a1fname');
             $table->string('a1lname');
-            $table->string('a1affiliation');
-            $table->string('a1email');
-            $table->string('a2fname')->nullable();
-            $table->string('a2lname')->nullable();
-            $table->string('a2affiliation')->nullable();
-            $table->string('a2email')->nullable();
-            $table->string('a3fname')->nullable();
-            $table->string('a3lname')->nullable();
-            $table->string('a3affiliation')->nullable();
-            $table->string('a3email')->nullable();
-            $table->string('a4fname')->nullable();
-            $table->string('a4lname')->nullable();
-            $table->string('a4affiliation')->nullable();
-            $table->string('a4email')->nullable();
-            $table->boolean('status');
-            $table->unsignedBigInteger('user_id');
+            $table->string('student_id');
+            $table->string('department');
+            $table->string('session');
+            $table->string('year');
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
             //$table->unsignedBigInteger('category_id');
-            $table->foreign('user_id')->references('id')->on('users');
+
             $table->foreign('category_id')->references('id')->on('categories');
 
         });

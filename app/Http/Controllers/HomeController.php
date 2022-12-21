@@ -21,7 +21,7 @@ class HomeController extends Controller
                         'journals.id as id','journals.abstract as abstract',
                         'journals.keywards as keywards',
                         'journals.a1fname as a1fname',
-                        'journals.a1lname as a1lname','journals.status')
+                        'journals.a1lname as a1lname')
                         ->orderBy('journals.created_at','desc')
                         ->paginate(10);
                         //dd($journals[0]);

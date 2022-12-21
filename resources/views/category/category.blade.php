@@ -2,7 +2,7 @@
     @section('content')
       <div class="container">
 <br>
-
+@include('layouts.messages')
       <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">

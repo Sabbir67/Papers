@@ -9,10 +9,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -60,12 +56,12 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //\DB::enableQueryLog();
         //dd($id);
-        $journals = Journal::where('category_id',$id)->with('category')->get();
-
+        $journals = Journal::where('category_id',$category)->with('category')->get();
+        
         //$cat2 = $cat->find($category);
         //$journals = Journal::find();
 
@@ -119,7 +115,14 @@ class CategoryController extends Controller
     {   $category = Category::all();
         $cat2 = $category->find($id);
 
-        $cat2->delete();
-        return redirect('admin/categories')->with('Success','Category Deleted');
+        try{
+            $cat2->delete();
+            return redirect('admin/categories')->with('success','Category Deleted');
+        }catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->with('error','There are journal in this category.');
+        }
+
+
+
     }
 }

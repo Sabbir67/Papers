@@ -16,9 +16,19 @@
 
         <h1 class="text-2xl font-bold p-3 ">Instruction to Author</h1>
         <ul class="text-left sm:pl-10 list-disc mt-2">
-              iste ab amet magnam neque praesentium perspiciatis eaque enim iusto ipsa. Aut blanditiis quis repudiandae sapiente, non perspiciatis? Nam quis enim soluta nihil illum modi perspiciatis placeat voluptatem, sequi dignissimos nemo nobis assumenda deleniti voluptatibus beatae vero earum harum corrupti expedita itaque dolorum qui, obcaecati rem. Suscipit repellendus, veniam ducimus mollitia temporibus sit minus pariatur ratione facilis exercitationem, molestias eveniet voluptate consectetur qui <br><br> deserunt  quae possimus nesciunt recusandae excepturi delectus neque tempore! Sapiente deserunt aliquam recusandae, iure ea tempora, beatae cupiditate<br><br> doloribus praesentium totam accusamus perspiciatis voluptates officiis, nihil est quas! Commodi veritatis, optio fuga assumenda ullam nesciunt aliquid distinctio, tempore dolorem illum culpa consectetur maxime. Rerum voluptatibus incidunt modi repudiandae neque alias!</p>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis assumenda, aperiam suscipit quam porro, quisquam voluptatem fugit non, rem laudantium eligendi. Provident soluta, omnis distinctio architecto cumque quas asperiores voluptates rerum saepe hic, velit recusandae quisquam nobis reiciendis. Sint accusamus vitae ad assumenda. Totam praesentium eius, <br><br> nostrum quae eveniet minima voluptate laborum veniam odio harum aut, omnis accusamus, odit porro corporis dolore id vitae asperiores ipsum. Aut laborum dolores reprehenderit fugit quisquam totam iure voluptate sequi. Expedita assumenda voluptates eius suscipit provident et voluptate excepturi sint, recusandae <br><br>
-              iste ab amet magnam neque praesentium perspiciatis eaque enim iusto ipsa. Aut blanditiis quis repudiandae sapiente, non perspiciatis? Nam quis enim soluta nihil illum modi perspiciatis placeat voluptatem, sequi dignissimos nemo nobis assumenda deleniti voluptatibus beatae vero earum harum corrupti expedita itaque dolorum qui, obcaecati rem. Suscipit repellendus, veniam ducimus mollitia temporibus sit minus pariatur ratione facilis exercitationem, molestias eveniet voluptate consectetur qui <br> deserunt  quae possimus nesciunt recusandae excepturi delectus neque tempore! Sapiente deserunt aliquam recusandae, iure ea tempora, beatae cupiditate<br> doloribus praesentium totam accusamus perspiciatis voluptates officiis, nihil est quas! Commodi veritatis, optio fuga assumenda ullam nesciunt aliquid distinctio, tempore dolorem illum culpa consectetur maxime. Rerum voluptatibus incidunt modi repudiandae neque alias!</p>
+              <p class=""><b>How to Publish</b>  </p>
+              <ul class="text-left pl-5 list-disc mt-2">
+                <li>First you have to Crteate a Account from Sign Up Button</li>
+                <li>Login the Dashboard</li>
+                <li>Press Create A Journal Button</li>
+                <li>Fill up the form wirh paper Title , Abstract, Key Words
+                    , Category , Published Date, Author Details , and Manuscript (Pdf Format) </li>
+                <li>You can add 1 to 3 author </li>
+                <li>Key Words must be short and meaningful</li>
+                <li>Press Submit Button</li>
+                <li>Reviewer will publish the paper after review</li>
+
+              </ul>
 
         </ul>
 
@@ -40,7 +50,7 @@
           </div>
 
 
-        
+
 
 
 
