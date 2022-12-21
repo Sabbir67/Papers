@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthorJournalController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\AdminCategoryController;
 
 
 
@@ -28,7 +29,7 @@ use App\Models\User;
 */
 //Guest routes
 Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/all-categories',[HomeController::class,'category'])->name('category');
+//Route::get('/all-categories',[HomeController::class,'category'])->name('category');
 Route::get('/all-papers',[HomeController::class,'allpapers'])->name('allpapers');
 Route::get('/about-us',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/instructions',[HomeController::class,'instruction'])->name('instruction');
@@ -50,11 +51,15 @@ require __DIR__.'/auth.php';
 Route::get('/journals',[JournalController::class,'index']);
 Route::get('/journals/{id}',[JournalController::class,'show']);
 
+Route::get('/all-categories',[CategoryController::class,'index'])->name('category');
+Route::get('/category/{id}',[CategoryController::class,'show']);
 
+//Search Route
 
-//Categoris Route
-
-
+Route::get(
+    'search',
+    App\Http\Controllers\SearchController::class
+)->name('search');
 
 
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
@@ -73,13 +78,13 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
     Route::get('/journals/{id}',[AuthorJournalController::class,'show']);
 
     // category
-    Route::get('/categories',[CategoryController::class,'index'])->name('viewcategory');
-    Route::get('/category/create',[CategoryController::class,'create'])->name('createcategory');
-    Route::get('/category/{id}',[CategoryController::class,'show'])->name('singlecategory');
-    Route::post('/category',[CategoryController::class,'store']);
-    Route::get('/category/{id}',[CategoryController::class,'edit']);
-    Route::post('/category/{id}',[CategoryController::class,'update']);
-    Route::delete('/delete/{id}',[CategoryController::class,'destroy'])->name('delete.destroy');
+    Route::get('/categories',[AdminCategoryController::class,'index'])->name('viewcategory');
+    Route::get('/category/create',[AdminCategoryController::class,'create'])->name('createcategory');
+    Route::get('/category/{id}',[AdminCategoryController::class,'show'])->name('singlecategory');
+    Route::post('/category',[AdminCategoryController::class,'store']);
+    Route::get('/category/{id}',[AdminCategoryController::class,'edit']);
+    Route::post('/category/{id}',[AdminCategoryController::class,'update']);
+    Route::delete('/delete/{id}',[AdminCategoryController::class,'destroy'])->name('delete.destroy');
 });
 
 
