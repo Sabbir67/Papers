@@ -1,14 +1,18 @@
 @extends('layouts.guest')
 @section('content')
-<form action="/search" method="get">
-    <input type="search" id="query" class="" name="query" placeholder="Search of Keywords....">
-    <button type="submit" class="p-3">Search</button>
-</form>
+<br>
 @if ($result)
     @if ($result->count())
+    <h1>{{ $result->count() }} results found.</h1>
     @foreach ($result as $re)
-        {{ $re->title }}
+        <div class="p-4 m-4 bg-gray-400 rounded">
+            <h1 class="text-black">{{ $re->title }}</h1>
+            <p>{{ substr($re->abstract, 0, 150) }}</p>
+        </div>
+
+
     @endforeach
+    {{ $result->links() }}
     @else
     <p>No result found</p>
     @endif

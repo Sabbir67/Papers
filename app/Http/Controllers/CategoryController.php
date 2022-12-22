@@ -35,8 +35,8 @@ class CategoryController extends Controller
         $keys = array_unique($key2);
 
         //dd($keys);
-
-        return view('categoryShow',compact('keys'));
+        return json_encode($keys);
+        //return view('categoryShow',compact('keys'));
 
     }
 }

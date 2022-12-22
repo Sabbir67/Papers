@@ -45,7 +45,79 @@
 
       </section>
 
+      <script>
+        $(document).ready(()=>{
 
+            let foo = $("#catUl").find('a');
+            console.log(foo.length);
+            $.each(foo,function(){
+                $(this).click(function(e){
+                    e.preventDefault();
+                    //console.log($(this).html());
+                    let cat_url = $(this).attr('href');
+                   // console.log(cat_url);
+                    $("#key_word").empty();
+
+                //     $.get(cat_url, function(data, status){
+                //     alert("Data: " + data + "\nStatus: " + status);
+                //  });
+                $.ajax({
+                    type: 'GET',
+                    url: cat_url,
+
+                    success:    function(data){
+                        $.each(data, function(key,val) {
+                        //alert(key+val);
+                        let val2 = val.replace(' ','+');
+                           // $("#key_word").append(key+":"+val2+"<br>");
+                            $("#key_word").append(
+                                "<a onclick='doSomething(event)' href='/search?query="+val2+"' class='p-3'>"+val+"</a>"
+                            );
+
+
+                        });
+
+                    },
+                    dataType: 'json'
+                });
+                });
+            });
+
+
+
+
+        });
+        function doSomething(e){
+                e.preventDefault();
+                console.log($(e.target).attr('href'));
+
+                let search_url = $(e.target).attr('href');
+                $("#j_div").empty();
+                $.ajax({
+                        type: 'GET',
+                        url: search_url,
+
+                        success:    function(data2){
+                            //alert(data2);
+                            $.each(data2.data, function(key,val) {
+                                console.log(val);
+                                $("#j_div").append(
+                                    "<a href='/journals/"+val.id+"' class='' >"+val.title+"</a><br>"
+                                );
+                                //console.log(data2[i].data[i].title);
+                                //return false
+
+                                //let title = JSON.parse(data2);
+                            });
+                        },
+                        dataType: 'json'
+
+
+                        });
+
+
+            }
+    </script>
       <!-- 2nd Section -->
 
       <section class="p-5">
@@ -55,9 +127,9 @@
           <div class="  bg-slate-50 pb-4">
 
             <h1 class="bg-blue-400 text-xl font-bold p-1 text-white  ">Categories</h1>
-            <ul class="text-left pl-10 list-disc mt-2">
+            <ul id="catUl" class="text-left pl-10 list-disc mt-2">
                 @foreach ($category as $categories )
-                    <a href="/category/{{ $categories->id }}"><li  class=" text-l ">{{ $categories->title }}</li></a>
+                    <a  href="/category/{{ $categories->id }}"><li  class=" text-l ">{{ $categories->title }}</li></a>
                 @endforeach
 
 
@@ -72,9 +144,14 @@
           <div class="col-span-2 bg-indigo-50 first-line:pb-4">
 
             <h3 class="bg-indigo-500 text-xl font-bold p-1 text-white ">Keywords</h3>
-            @foreach ($key as $keys)
-                <a href="/search?query={{str_replace(' ','+',$keys)}}" class="p-3">{{ ucwords($keys) }}</a>
-            @endforeach
+            <div id="key_word" class="p-3">
+
+                @foreach ($key as $keys)
+                <a onclick="doSomething(event)" href="/search?query={{str_replace(' ','+',$keys)}}" class="p-3">{{ ucwords($keys) }}</a>
+                @endforeach
+
+            </div>
+
 
 
 
@@ -102,7 +179,7 @@
           <div class="col-span-1 bg-indigo-50 pb-4">
 
             <h3 class="bg-indigo-400 text-xl font-bold p-1 text-white ">All Papers</h3>
-            <ul class="text-left pl-10 list-disc mt-2">
+            <ul id="j_div" class="text-left pl-10 list-disc mt-2">
                 @foreach ($journals as $journal)
                 <a href="/paperview/{{ $journal->id }}"><li  class=" text-l hover:text-green">{{ $journal->jtitle }}</li></a>
 
@@ -213,4 +290,5 @@
         </div>
 
       </section>
+
 @endsection

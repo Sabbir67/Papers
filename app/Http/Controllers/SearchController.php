@@ -10,15 +10,17 @@ class SearchController extends Controller
 {
     public function __invoke(Request $request)
     {
-       
+
       //$sort =  $client->getSortableAttributes();
        // dd($sort);
         $result = null;
         if($query = $request->get('query')){
             $result = Journal::search($query)
             ->orderBy('created_at','DESC')
-            ->get();
+            ->paginate(10);
+
         }
-        return view('search',compact('result'));
+        //return view('search',compact('result'));
+        return json_encode($result);
     }
 }
