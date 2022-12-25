@@ -75,6 +75,9 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function(){
     Route::post('/journals',[AuthorJournalController::class,'store'])->name('journal.create');
     Route::get('/journals',[AuthorJournalController::class,'index']);
     Route::get('/journals/{id}',[AuthorJournalController::class,'show']);
+    Route::get('/journals/{id}/edit',[AuthorJournalController::class,'edit']);
+    Route::post('/journals/{id}',[AuthorJournalController::class,'update'])->name('journal.update');
+    Route::delete('/journals/{id}',[AuthorJournalController::class,'destroy']);
 
     // category
     Route::get('/categories',[AdminCategoryController::class,'index'])->name('viewcategory');

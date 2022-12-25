@@ -19,7 +19,7 @@
 
                 </button>
 
-                <button class="bg-blue-800 p-2 hover:bg-blue-500 text-white font-bold sm:py-2 sm:px-4 mb-3 border rounded"> <a href="{{ route('register') }}">Submit Your Paper Now</a>
+                {{-- <button class="bg-blue-800 p-2 hover:bg-blue-500 text-white font-bold sm:py-2 sm:px-4 mb-3 border rounded"> <a href="{{ route('register') }}">Submit Your Paper Now</a> --}}
 
                 </button>
               </div>
@@ -28,12 +28,12 @@
 
             <div class="h-60 bg-blue-500 bg-opacity-25  sm:w-1/4  border rounded p-7 text-center ">
               <div class="">
-                <h2 class="text-white opacity-100 text-center text-2xl">Call for Papers</h2>
+                <h2 class="text-white opacity-100 text-center text-2xl">Submit Your Papers</h2>
 
-              <p class="font-bold text-white ">Research Paper Management System determined to ensure high-quality, original publications. </p>
+              <p class="font-bold text-white ">If you want to submit your paper mail us or contact IIT Department, JU. </p>
 
-              <button class="mt-4 bg-red-500 hover:bg-pink-700 text-white font-bold py-2 px-4 border rounded"> <a href="{{ route('register') }}">
-                Submit Your Paper </a>
+              <button class="mt-4 bg-red-500 hover:bg-pink-700 text-white font-bold py-2 px-4 border rounded"> <a>
+                pmit@juniv.edu </a>
               </button>
               </div>
             </div>
@@ -71,7 +71,7 @@
                         let val2 = val.replace(' ','+');
                            // $("#key_word").append(key+":"+val2+"<br>");
                             $("#key_word").append(
-                                "<a onclick='doSomething(event)' href='/search?query="+val2+"' class='p-3'>"+val+"</a>"
+                                "<button class='p-2 mr-3 text-black mt-3 bg-gray-300 hover:bg-blue-500 hover:text-white' onclick='doSomething(event)' href='/search?query="+val2+"' class='p-3'>"+val+"</button>"
                             );
 
 
@@ -102,7 +102,7 @@
                             $.each(data2.data, function(key,val) {
                                 console.log(val);
                                 $("#j_div").append(
-                                    "<a href='/journals/"+val.id+"' class='' >"+val.title+"</a><br>"
+                                    "<li><a class='hover:text-blue-600 hover:font-semibold' href='/journals/"+val.id+"' class='' >"+val.title+"</a></li>"
                                 );
                                 //console.log(data2[i].data[i].title);
                                 //return false
@@ -129,7 +129,7 @@
             <h1 class="bg-blue-400 text-xl font-bold p-1 text-white  ">Categories</h1>
             <ul id="catUl" class="text-left pl-10 list-disc mt-2">
                 @foreach ($category as $categories )
-                    <a  href="/category/{{ $categories->id }}"><li  class=" text-l ">{{ $categories->title }}</li></a>
+                    <a class=" hover:text-blue-600 hover:font-semibold" href="/category/{{ $categories->id }}"><li  class=" text-l ">{{ $categories->title }}</li></a>
                 @endforeach
 
 
@@ -147,7 +147,7 @@
             <div id="key_word" class="p-3">
 
                 @foreach ($key as $keys)
-                <a onclick="doSomething(event)" href="/search?query={{str_replace(' ','+',$keys)}}" class="p-3">{{ ucwords($keys) }}</a>
+                <button onclick="doSomething(event)" href="/search?query={{str_replace(' ','+',$keys)}}"  class="p-2  text-black mt-3 bg-gray-300 hover:bg-blue-500 hover:text-white">{{ ucwords($keys) }}</button>
                 @endforeach
 
             </div>
@@ -181,7 +181,7 @@
             <h3 class="bg-indigo-400 text-xl font-bold p-1 text-white ">All Papers</h3>
             <ul id="j_div" class="text-left pl-10 list-disc mt-2">
                 @foreach ($journals as $journal)
-                <a href="/paperview/{{ $journal->id }}"><li  class=" text-l hover:text-green">{{ $journal->jtitle }}</li></a>
+                <a class=" hover:text-blue-600 hover:font-semibold" href="/paperview/{{ $journal->id }}"><li  class=" text-l hover:text-green">{{ $journal->jtitle }}</li></a>
 
                 @endforeach
             </ul>
@@ -214,21 +214,25 @@
 
           @foreach ($journals as $journal)
 
-          <div class="bg-indigo-200 mb-3 w-full pt-6 rounded-2xl">
+          <div class="bg-indigo-100 mb-3 w-full pt-6 rounded-2xl">
 
 
             <!-- <img class=" object-contain h-40 rounded " src="img/profile2.png" alt=""> -->
-            <div class="flex flex-col justify-center items-center"> <img class=" object-contain h-40 rounded-full " src="img/profile2.png" alt=""></div>
+            {{-- <div class="flex flex-col justify-center items-center"> <img class=" object-contain h-40 rounded-full " src="img/profile2.png" alt=""></div> --}}
 
             <div class="text-center p-3">
-              <p>{{ $journal->a1fname }}</p>
+              <p><b>{{ $journal->a1fname }}</b> </p>
+              <p>{{ $journal->department }} ,{{ $journal->session }} , {{ $journal->year }}</p>
               <p>{{ $journal->jcreated_at }}</p>
-              <p>{{ $journal->jtitle }}</p>
+
+              <p><b> {{ $journal->jtitle }}</b></p>
+
+              <a  href="/paperview/{{ $journal->id }}"><div class=" text-center text-bold text-blue-700 font-bold pt-1 hover:bg-blue-500 hover:text-white">  View Paper</div> </a>
 
             </div>
 
             <div class="grid sm:grid-cols-1 align-bottom">
-              <a href="/paperview/{{ $journal->id }}"><div class="bg-blue-900 text-center h-12 text-bold text-white pt-2">  View Paper</div> </a>
+
 
             </div>
 
@@ -243,7 +247,7 @@
 
       <!-- 3nd Section -->
 
-      <section class="">
+      {{-- <section class="">
 
 
         <div class="grid grid-cols-2 sm:grid-cols-4 sm:gap-4 text-center bg-blue-100">
@@ -289,6 +293,6 @@
 
         </div>
 
-      </section>
+      </section> --}}
 
 @endsection

@@ -21,9 +21,13 @@ class HomeController extends Controller
                         'journals.id as id','journals.abstract as abstract',
                         'journals.keywards as keywards',
                         'journals.a1fname as a1fname',
-                        'journals.a1lname as a1lname')
+                        'journals.a1lname as a1lname',
+                        'journals.session as session',
+                        'journals.year as year',
+                        'journals.department as department')
+
                         ->orderBy('journals.created_at','desc')
-                        ->paginate(10);
+                        ->paginate(12);
                         //dd($journals[0]);
         // $users = DB::table('users')
         //             ->select('users.name as uname',
@@ -88,7 +92,10 @@ class HomeController extends Controller
                         'journals.id as id','journals.abstract as abstract',
                         'journals.keywards as keywards',
                         'journals.a1fname as a1fname',
-                        'journals.a1lname as a1lname')
+                        'journals.a1lname as a1lname',
+                        'journals.session as session',
+                        'journals.year as year',
+                        'journals.department as department')
                         ->orderBy('journals.created_at','desc')->get();
 
 

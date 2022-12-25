@@ -19,6 +19,7 @@
       }
 
     </style>
+
   </head>
 
 
@@ -40,10 +41,10 @@
                       </a>
                     </div>
                     <!-- Primary Navbar items -->
-                    <div class="hidden md:flex items-center space-x-1">
-                      <a href="{{ route('home') }}" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">Home</a>
+                    <div id="nav" class="hidden nav md:flex items-center space-x-1">
+                      <a href="{{ route('home') }}" class="py-4 px-2 text-gray-500 border-green-500  hover:text-green-500 font-semibold ">Home</a>
 
-                      <a href="{{ route('category') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">All Categories</a>
+                      {{-- <a href="{{ route('category') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">All Categories</a> --}}
 
                       <a href="{{ route('allpapers') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">All Papers</a>
 
@@ -54,9 +55,10 @@
                       <a href="{{ route('instruction') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">Instructions</a>
                     </div>
                   </div>
+
                   <!-- Secondary Navbar items -->
 
-                  @if (auth()->guard('web')->user())
+            {{-- @if (auth()->guard('web')->user()) --}}
 
                   {{-- <a href="{{ route('logout') }}"
                   onclick="event.preventDefault();
@@ -64,26 +66,26 @@
                   Logout
                 </a> --}}
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST"
+              {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST"
                   style="display: none;">
                   {{ csrf_field() }}
-              </form>
+              </form> --}}
 
-              <div class="hidden md:flex items-center space-x-3 ">
+              {{-- <div class="hidden md:flex items-center space-x-3 ">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log Out</a>
 
                 <a href="{{ route('dashboard') }}" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Dashboard</a>
-              </div>
+              </div> --}}
 
-              @else
+              {{-- @else
 
                   <div class="hidden md:flex items-center space-x-3 ">
                     <a href="{{ route('login') }}" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">Log In</a>
                     <a href="{{ route('register') }}" class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign Up</a>
                   </div>
 
-                @endif
+                @endif --}}
                   <!-- Mobile menu button -->
                   <div class="md:hidden flex items-center">
                     <button class="outline-none mobile-menu-button">
@@ -106,7 +108,7 @@
               <div class="hidden mobile-menu">
                 <ul class="">
                   <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
-                  <li><a href="allcategories.html" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">All Categories</a></li>
+                  {{-- <li><a href="allcategories.html" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">All Categories</a></li> --}}
                   <li><a href="allpaper.html" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">All Papers</a></li>
                   <li><a href="editorialboard.html" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Editorial Board</a></li>
                   <li><a href="aboutus.html" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About Us</a></li>
@@ -150,7 +152,7 @@
                     <h3 class="text-xl font-bold text-white text-left">Quick Links</h3>
                     <ul class="text-left pl-5 list-disc mt-2 text-white">
                         <li  class=""> <a href="{{ route('home') }}">Home</a></li>
-                        <li  class=""> <a href="{{ route('category') }}">All Categories</a></li>
+                        {{-- <li  class=""> <a href="{{ route('category') }}">All Categories</a></li> --}}
                         <li  class=""> <a href="{{ route('allpapers') }}">All Papers</a></li>
                         <li  class=""> <a href="{{ route('editorialmember') }}">Editorial Board</a></li>
                         <li  class=""> <a href="{{ route('aboutus') }}">About Us</a></li>
@@ -168,12 +170,10 @@
 
                   <div class="pt-3 sm:pb-4 sm:col-span-2">
 
-                    <h1 class="text-xl font-bold text-white text-left">Quick Links</h1>
-                    <ul class="text-left pl-5 list-disc mt-2 text-white">
+                    <h1 class="text-xl font-bold text-white text-left">Address</h1>
+                    <ul class="text-left  mt-2 text-white">
 
-                      <li  class="">Tearms & Condition</li>
-                      <li  class="">Privacy Policy</li>
-
+                      <p> Jahangirnagar University Savar, <br> Dhaka-1342, Bangladesh. <br> Telephone: PABX:02224491045-51 , <br> Fax:02224491052</p>
 
                     </ul>
 

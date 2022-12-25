@@ -86,10 +86,10 @@
 
 
 
-                    <a href="/admin/journals/create" class="nav-item nav-link"><i class="fa fa-pen"></i><span class="text-white text-l pl-2">Create a Journal</span> </a>
+                    <a href="/admin/journals/create" class="nav-item nav-link"><i class="fa fa-pen"></i><span class="text-white text-l pl-2">Create a Paper</span> </a>
 
 
-                    <a href="/admin/journals" class="nav-item nav-link"><i class="fa fa-globe"></i> <span class="text-white text-l pl-2">Browse All Journals</span> </a>
+                    <a href="/admin/journals" class="nav-item nav-link"><i class="fa fa-globe"></i> <span class="text-white text-l pl-2">Browse All Papers</span> </a>
 
 
                     <div class="nav-item dropdown">
@@ -213,8 +213,8 @@
                             <span class="d-none d-lg-inline-flex "></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            {{-- <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a> --}}
                             <li class="dropdown-item">
 
                                 @if (!auth()->guard('web')->user())

@@ -3,8 +3,8 @@
     <div class="container center">
         @include('layouts.messages')
         <br>
-        <h1 align="center">Paper Submission Form</h1> <br>
-        <form action="{{ route('journal.create') }}" method="POST" enctype="multipart/form-data" class="form-horizontal"
+        <h1 align="center">Paper Edit</h1> <br>
+        <form action="{{ route('journal.update',$journal->id) }}" method="POST" enctype="multipart/form-data" class="form-horizontal"
             id="journal_form">
             {{ csrf_field() }}
 
@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Article title</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="title" placeholder="Paper title" class="form-control" type="text">
+                    <input name="title" value="{{ $journal->title }}" class="form-control" type="text">
                 </div>
             </div>
 
@@ -20,14 +20,14 @@
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Abstract</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <textarea name="abstract" rows="6" cols="80" class="form-control"></textarea>
+                    <textarea name="abstract" rows="6" cols="80" class="form-control"> {{ $journal->abstract}} </textarea>
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Key Words(Seperated by Comma (,))</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="keywords" placeholder="Ex. Machine Learning, Networking, etc" class="form-control"
+                    <input name="keywords" value="{{ $journal->keywards }}" class="form-control"
                         type="text">
                 </div>
             </div>
@@ -36,9 +36,9 @@
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
 
                     <select name="category_id" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                        <option value="{{ $journal->category->id }}" selected>{{ $journal->category->title }}</option>
+                        @foreach ($category as $cat)
+                            <option value="{{ $cat->id }}">{{ $cat->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -47,7 +47,7 @@
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Publish Date</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="jdate" class="form-control" type="date">
+                    <input name="jdate" value="{{ $journal->jdate }}" class="form-control" type="date">
                 </div>
             </div>
 
@@ -62,50 +62,50 @@
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">First Name:</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="a1fname" placeholder="First Name" class="form-control" type="text">
+                    <input name="a1fname" value="{{ $journal->a1fname }}" class="form-control" type="text">
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Last Name:</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="a1lname" placeholder="Last Name" class="form-control" type="text">
+                    <input name="a1lname" value="{{ $journal->a1lname }}" class="form-control" type="text">
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Student ID:</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="student_id" placeholder="Student ID" class="form-control" type="text">
+                    <input name="student_id" value="{{ $journal->student_id }}" class="form-control" type="text">
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Department :</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="department" placeholder="Department" class="form-control" type="text">
+                    <input name="department" value="{{ $journal->department }}" class="form-control" type="text">
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Session</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="session" placeholder="Session" class="form-control" type="text">
+                    <input name="session" value="{{ $journal->session }}" class="form-control" type="text">
                 </div>
             </div>
 
             <div class="mt-3 form-group">
                 <label class="col-md-8 col-md-offset-2 control-label">Year</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input name="year" placeholder="Year" class="form-control" type="text">
+                    <input name="year" value="{{ $journal->year }}" class="form-control" type="text">
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="mt-3 form-group">
-                <label class="col-md-8 col-md-offset-2 control-label">Insert Paper PDF Format</label>
+                <label class="col-md-8 col-md-offset-2 control-label">Insert pdf file</label>
                 <div class="col-md-8 col-md-offset-2 inputGroupContainer">
-                    <input type="file" name="pdf">
+                    <input type="file" value="{{ $pdf }}" name="pdf">
                 </div>
             </div>
 
